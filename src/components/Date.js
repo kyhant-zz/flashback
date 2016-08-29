@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { getArticles } from '../models/articles';
+var exports = module.exports;
 
 export default class Date extends Component {
   	constructor(props) {
@@ -11,6 +13,11 @@ export default class Date extends Component {
   		e.preventDefault();
   		this.setState({date: this})
   		console.log('date', e.target.value)
+  		var selectedDate = e.target.value;
+  		getArticles(selectedDate)
+  		.then(function(res) {
+  			console.log('res', res)
+  		})
   	}
 
 	  render() {
