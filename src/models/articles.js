@@ -3,8 +3,9 @@ var apiParams = require('../components/Date');
 
 
 export function getArticles(selectedDate) {
+	var date = selectedDate.replace(/-/g,'');
 	var apiKey = '4e12c9d59d244a67a6da017f068d7d59';
-	var url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api=key=${apiKey}?begin_date=${selectedDate}?end_date=${selectedDate}`;
+	var url = `http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}&begin_date=${date}&end_date=${date}`;
 	return fetch(url)
   .then(function(data){
  		console.log(data)
