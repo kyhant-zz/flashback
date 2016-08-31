@@ -18,12 +18,18 @@ export default class Headlines extends Component {
   	}  
 
 	render() {
+		console.log('this.state.headlines',this.state.headlines)
 		return (
-			<div className='articles'>
-				<h1>Here are the headlines for selected day</h1>
+			<div className='headlineMain'>
+				<h1>Here are the headlines for {this.props.date}</h1>
 				{this.state.headlines
 					.map((headline) => {
-						<h3>{headline.main}</h3>
+						return (
+						<div className='article' key={headline._id}>
+							<h6>{headline.headline.main}</h6>
+							<hr/>
+						</div>
+						)
 					})
 				}
 			</div>

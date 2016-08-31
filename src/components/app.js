@@ -17,21 +17,15 @@ export default class App extends Component {
     e.preventDefault();
     var selectedDate = e.target.value;
     this.setState({date: selectedDate})
-    // var self = this;
-    // getArticles(selectedDate)
-    // .then(function(res) {
-    //   var headlines = res.response.docs
-    //   self.setState({headlines});
-    // })
   }
 
   render() {
     if(this.state.date === null) {
       return (
         <div className='app'>
-      	 <div>Welcome to Flashback</div>
+      	 <h1>Welcome to Flashback</h1>
          <div className='date'> 
-          <div>Choose a Date</div>
+          <h3>Choose a Date</h3>
           <input type='date' onChange={this._handleDateChange.bind(this)}></input>
         </div>
   	   </div>
