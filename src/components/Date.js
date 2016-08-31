@@ -6,17 +6,21 @@ export default class Date extends Component {
   	constructor(props) {
   		super(props);
 
-  		this.state = {date: null}
+  		this.state = {
+  			date: null,
+  			headlines: null,
+  		}
   	}
 
   	handleDateChange(e) {
   		e.preventDefault();
   		this.setState({date: this})
-  		console.log('date', e.target.value)
+  		var self = this;
   		var selectedDate = e.target.value;
   		getArticles(selectedDate)
   		.then(function(res) {
-  			console.log('res', res)
+  			var headlines = res.response.docs
+  			self.setState({headlines});
   		})
   	}
 
