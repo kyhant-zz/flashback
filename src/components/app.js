@@ -33,6 +33,10 @@ export default class App extends Component {
      } else {
       return (
         <div className='headlines'>
+          <div className='date'> 
+            <h3>Choose a Date</h3>
+            <input type='date' onChange={this._handleDateChange.bind(this)}></input>
+          </div>
           <Headlines date={this.state.date} />
         </div>
       )

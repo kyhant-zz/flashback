@@ -26,7 +26,7 @@ export default class Headlines extends Component {
 					.map((headline) => {
 						return (
 						<div className='article' key={headline._id}>
-							<h6>{headline.headline.main}</h6>
+							<a target='blank' href={headline.web_url}><h6>{headline.headline.main}</h6></a>
 							<hr/>
 						</div>
 						)
