@@ -10,6 +10,19 @@ export default class Headlines extends Component {
 
 	componentDidMount() {
   		var self = this;
+  		console.log('SELF',self)
+  		console.log('THIS.PROPS.DATE', this.props.date)
+  		getArticles(this.props.date)
+  		.then(function(res) {
+  			var headlines = res.response.docs
+  			self.setState({headlines});
+  		})
+  	}
+
+  	_handleDateChange() {
+  		var self = this;
+  		console.log('SELF',self)
+  		console.log('THIS.PROPS.DATE', this.props.date)
   		getArticles(this.props.date)
   		.then(function(res) {
   			var headlines = res.response.docs
@@ -27,6 +40,7 @@ export default class Headlines extends Component {
 						return (
 						<div className='article' key={headline._id}>
 							<a target='blank' href={headline.web_url}><h6>{headline.headline.main}</h6></a>
+							<div className='snippet'>{headline.snippet}</div>
 							<hr/>
 						</div>
 						)
