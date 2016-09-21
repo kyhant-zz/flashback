@@ -26,7 +26,7 @@ export default class App extends Component {
       	 <h1>Welcome to Flashback</h1>
          <div className='date'> 
           <h3>Choose a Date</h3>
-          <input type='date' onChange={this._handleDateChange.bind(this)}></input>
+          <input type='date' className='date_picker' onChange={this._handleDateChange.bind(this)}></input>
         </div>
   	   </div>
       )
