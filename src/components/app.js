@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Date from './Date';
-import Headlines from './Headlines';
+import Articles from './Articles';
 import { getArticles } from '../models/articles';
 
 export default class App extends Component {
@@ -9,35 +9,40 @@ export default class App extends Component {
 
   	this.state = {
   		date: null,
-      headlines:[]
+      articles:[]
   	}
   }
 
-  _handleDateChange(e) {
-    e.preventDefault();
-    var selectedDate = e.target.value;
-    this.setState({date: selectedDate})
+  articleSearch(date){
+    let self = this;
+    getArticles(date) 
+    .then(function(articles) {
+      let headlines = articles.response.docs;
+      self.setState({
+        articles: articles,
+        date:date
+      })
+    })
   }
+
 
   render() {
     if(this.state.date === null) {
       return (
         <div className='app'>
-      	 <h1>Welcome to Flashback</h1>
+      	 <h1>Flashback</h1>
+         <h3>What happened the day you were born?</h3>
          <div className='date'> 
-          <h3>Choose a Date</h3>
-          <input type='date' className='date_picker' onChange={this._handleDateChange.bind(this)}></input>
+          <h6>Select a date to get started</h6>
+          <Date onDateChange={this.articleSearch.bind(this)} />
         </div>
   	   </div>
       )
      } else {
       return (
-        <div className='headlines'>
-          <div className='date'> 
-            <h3>Choose a Date</h3>
-            <input type='date' onChange={this._handleDateChange.bind(this)}></input>
-          </div>
-          <Headlines date={this.state.date} />
+        <div className='articles'>
+          <Date onDateChange={this.articleSearch} />
+          <Articles articles={this.state.articles} />
         </div>
       )
      }
