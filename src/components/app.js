@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Date from './Date';
-import Articles from './Articles';
+import ArticleList from './Article_List';
 import { getArticles } from '../models/articles';
 
 export default class App extends Component {
@@ -17,9 +17,8 @@ export default class App extends Component {
     let self = this;
     getArticles(date) 
     .then(function(articles) {
-      let headlines = articles.response.docs;
       self.setState({
-        articles: articles,
+        articles: articles.response.docs,
         date:date
       })
     })
@@ -41,8 +40,10 @@ export default class App extends Component {
      } else {
       return (
         <div className='articles'>
-          <Date onDateChange={this.articleSearch} />
-          <Articles articles={this.state.articles} />
+          <Date onDateChange={this.articleSearch.bind(this)} />
+          <ArticleList 
+            articles={this.state.articles}
+            date={this.state.date} />
         </div>
       )
      }
