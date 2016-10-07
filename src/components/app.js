@@ -53,7 +53,7 @@ export default class App extends Component {
       return (
         <div>
           <div className="header">
-            <h1 className='header'>Top Headlines for {moment(this.state.date).format("dddd, MMMM Do YYYY")}</h1>
+            <h1 className='header'>Top NYT Headlines for {moment(this.state.date).format("dddd, MMMM Do YYYY")}</h1>
             <Date onDateChange={this.articleSearch.bind(this)} />
           </div>
           <div className='articles'>
