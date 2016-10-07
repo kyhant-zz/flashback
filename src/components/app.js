@@ -43,7 +43,7 @@ export default class App extends Component {
             
             <h3>What happened the day you were born?</h3>
             <div className='date'> 
-              <h6>Select a date to find out:</h6>
+              <h4>Select a date to find out:</h4>
               <Date onDateChange={this.articleSearch.bind(this)} />
             </div>
           </div>
